@@ -2,20 +2,29 @@
 
 A small client-side expense and income tracker that stores data in localStorage.
 
-Files added
-- index.html — app entry point
-- app.js — application logic (already added)
-- style.css — basic styling
-- sw.js — simple service worker that caches the app shell
+Red theme
+- I updated the app to use a red accent/theme. The primary accent color is #b91c1c.
+
+PWA / iPhone install notes
+1. Host the site over HTTPS (GitHub Pages is the easiest option):
+   - Go to your repository Settings → Pages and enable Pages from the main branch ("/ (root)").
+   - Wait a few minutes for the site to be published at https://<your-username>.github.io/Salary-manager/
+
+2. Open the published site in Safari on your iPhone (iOS 16):
+   - Visit the GitHub Pages URL for the repo.
+   - Tap the Share button (the square with an arrow).
+   - Choose "Add to Home Screen".
+   - Optionally edit the name and tap Add. The app will appear as an icon on your home screen and can be launched like a native app.
+
+Notes on icons and compatibility
+- iOS (Safari) does not fully honor the Web App manifest; it prefers a PNG apple-touch-icon. I added SVG icons (icons/icon-192.svg and icons/icon-512.svg) and linked an apple-touch-icon. If the icon doesn't show correctly on iOS, create a PNG apple-touch-icon (e.g., 180x180) and add it to the repo, then update the link in index.html:
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png">
+
+Service worker
+- The repository includes a minimal service worker (sw.js) that caches the app shell. iOS has limited service worker support; offline behavior may vary.
 
 Run locally
-- Open index.html in a browser, or serve the directory using a static file server (recommended):
-  - Python 3: `python -m http.server`
-  - Node: `npx http-server`
-- The app stores data in your browser's localStorage.
-
-Notes
-- The service worker caches the basic files for offline use. If you change files during development, you may need to clear the site data or unregister the service worker in DevTools.
+- Serve the directory via a static server and open the site in Safari on your iPhone using your machine's local IP (must be HTTPS for full PWA features). For quick testing, GitHub Pages is recommended.
 
 License
-- This repository has no license file. Add one if you want to make the project open-source.
+- This repository has no license file. Add one to make the project open-source.
